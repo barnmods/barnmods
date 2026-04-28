@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>R6 Products</title>
+<style>
+body { font-family: Arial; background:black; color:white; }
+.products { display:grid; gap:20px; padding:40px; }
+.card { background:#1a1a1a; padding:15px; border-radius:10px; }
+button { width:100%; padding:10px; background:red; color:white; border:none; }
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center;">R6 Siege Products</h1>
+
+<div class="products">
+    <div class="card">
+        <h3>R6 Account</h3>
+        <p>$10.99</p>
+        <button onclick="addToCart('R6 Account', 10.99)">Add</button>
+    </div>
+
+    <div class="card">
+        <h3>Operator Pack</h3>
+        <p>$7.99</p>
+        <button onclick="addToCart('R6 Operators', 7.99)">Add</button>
+    </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+</script>
+
+</body>
+</html>

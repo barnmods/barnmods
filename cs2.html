@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CS2 Products</title>
+<style>
+body { font-family: Arial; background: black; color: white; }
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px; }
+.card { background:#1a1a1a; padding:15px; border-radius:10px; }
+button { width:100%; padding:10px; background:red; border:none; color:white; cursor:pointer; }
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center;">CS2 Products</h1>
+
+<div class="products">
+    <div class="card">
+        <h3>CS2 Skin Pack</h3>
+        <p>$5.99</p>
+        <button onclick="addToCart('CS2 Skin Pack', 5.99)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h3>CS2 Prime Account</h3>
+        <p>$12.99</p>
+        <button onclick="addToCart('CS2 Prime Account', 12.99)">Add to Cart</button>
+    </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+}
+</script>
+
+</body>
+</html>

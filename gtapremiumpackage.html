@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA Premium Package</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🔴 BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 20%, red, transparent 40%),
+                radial-gradient(circle at 80% 60%, darkred, transparent 40%),
+                black;
+    animation: move 12s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes move {
+    0% { transform: translate(-10%, -10%) scale(1); }
+    100% { transform: translate(-20%, -20%) scale(1.3); }
+}
+
+/* 🧊 GLASS */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+}
+
+/* PAGE LAYOUT */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: red;
+}
+
+/* IMAGE SLIDER */
+.slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.slider img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    scroll-snap-align: center;
+}
+
+/* DESCRIPTION */
+.desc {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.add {
+    background: red;
+    color: white;
+}
+
+.cart {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container glass">
+
+    <h1>GTA V Premium Package</h1>
+
+    <!-- IMAGE SLIDER -->
+    <div class="slider">
+        <img src="https://wallpapercave.com/wp/wp1818457.jpg">
+        <img src="https://wallpapercave.com/wp/wp2402856.jpg">
+        <img src="https://wallpapercave.com/wp/wp2723464.jpg">
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="desc glass">
+        <h2>Description</h2>
+        <p>
+            The GTA V Premium Package gives you access to exclusive in-game tools, 
+            premium features, and enhanced gameplay advantages. This package is 
+            designed for players who want a next-level experience with fast setup 
+            and instant access after purchase.
+        </p>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+        <button class="add" onclick="addToCart()">Add to Cart</button>
+        <button class="cart" onclick="goToCart()">Go to Cart</button>
+    </div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart() {
+    cart.push({ name: "GTA Premium Package", price: 14.99 });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+}
+
+function goToCart() {
+    window.location.href = "cart.html";
+}
+</script>
+
+</body>
+</html>
+

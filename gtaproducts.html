@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA V Products</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    color: white;
+}
+
+/* 🔴 BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 20%, red, transparent 40%),
+                radial-gradient(circle at 80% 60%, darkred, transparent 40%),
+                black;
+    animation: move 12s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes move {
+    0% { transform: translate(-10%, -10%) scale(1); }
+    100% { transform: translate(-20%, -20%) scale(1.3); }
+}
+
+/* 🧊 GLASS */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    padding: 30px;
+    color: red;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+/* CARD */
+.card {
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px red;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: red;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<h1>GTA V Products</h1>
+
+<div class="products">
+
+    <!-- NORMAL PRODUCT -->
+    <div class="card glass">
+        <h3>GTA Mod Menu</h3>
+        <p>$9.99</p>
+        <button onclick="addToCart('GTA Mod Menu', 9.99)">Add to Cart</button>
+    </div>
+
+    <!-- 🔥 PREMIUM PACKAGE (REDIRECT) -->
+    <div class="card glass" onclick="openPremium()">
+        <h3>GTA Premium Package</h3>
+        <p>$14.99</p>
+        <button>View Details</button>
+    </div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(name + " added to cart!");
+}
+
+/* 🔥 REDIRECT TO PREMIUM PAGE */
+function openPremium() {
+    window.location.href = "gtapremiumpackage.html";
+}
+</script>
+
+</body>
+</html>

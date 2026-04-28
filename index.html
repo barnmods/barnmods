@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>barnmods shop</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🔴 BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 20%, red, transparent 40%),
+                radial-gradient(circle at 80% 60%, darkred, transparent 40%),
+                black;
+    animation: fluid 12s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes fluid {
+    0% { transform: translate(-10%, -10%) scale(1); }
+    100% { transform: translate(-20%, -20%) scale(1.3); }
+}
+
+/* 🧊 GLASS */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    margin: 20px;
+}
+
+.cart-btn {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: rgba(255,0,0,0.3);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    margin: 30px;
+
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255,0,0,0.2);
+}
+
+.hero h1 {
+    font-size: 60px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    background: linear-gradient(90deg, red, white, red);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: glowMove 5s linear infinite;
+
+    text-shadow:
+        0 0 10px rgba(255,0,0,0.8),
+        0 0 25px rgba(255,0,0,0.6),
+        0 0 40px rgba(0,0,0,0.8);
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #ccc;
+}
+
+/* 🎮 GRID */
+.games {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+}
+
+/* CARD */
+.card {
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card h2 {
+    padding: 15px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 25px red;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 900px) {
+    .games {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .games {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+
+/* ANIMATION */
+@keyframes glowMove {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar glass">
+    <h2>barnmods</h2>
+
+    <div class="cart-btn" onclick="goToCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>The Best Store for Game Products</h1>
+    <p>Fast delivery • Premium quality • Elite gaming experience</p>
+</div>
+
+<!-- GAMES -->
+<div class="games">
+
+    <div class="card glass" onclick="goTo('gtaproducts.html')">
+        <img src="https://wallpapercave.com/wp/wp1818457.jpg">
+        <h2>GTA V</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('fortnite.html')">
+        <img src="https://wallpapercave.com/wp/wp5128415.jpg">
+        <h2>Fortnite</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('roblox.html')">
+        <img src="https://wallpapercave.com/wp/wp1874156.jpg">
+        <h2>Roblox</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('rust.html')">
+        <img src="https://wallpapercave.com/wp/wp7151987.jpg">
+        <h2>Rust</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('minecraft.html')">
+        <img src="https://wallpapercave.com/wp/wp10939843.jpg">
+        <h2>Minecraft</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('cs2.html')">
+        <img src="https://wallpapercave.com/wp/wp13739761.jpg">
+        <h2>CS2</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('r6.html')">
+        <img src="https://wallpapercave.com/wp/wp5072109.jpg">
+        <h2>R6 Siege</h2>
+    </div>
+
+    <div class="card glass" onclick="goTo('fivem.html')">
+        <img src="https://wallpapercave.com/wp/wp8327694.jpg">
+        <h2>FiveM</h2>
+    </div>
+
+</div>
+
+<script>
+function goTo(page) {
+    window.location.href = page;
+}
+
+function goToCart() {
+    window.location.href = "cart.html";
+}
+
+/* CART COUNT */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.getElementById("cart-count").innerText = cart.length;
+</script>
+
+</body>
+</html>
